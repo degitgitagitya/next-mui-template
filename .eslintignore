@@ -1,0 +1,6 @@
+**/node_modules/*
+**/out/*
+**/.next/*
+react-table-config.d.ts
+sw.js
+workbox-*.js

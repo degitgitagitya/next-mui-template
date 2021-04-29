@@ -32,3 +32,13 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# vscode
+/.vscode
+
+# env
+.env*.local
+.env*.production
+
+# eslint 
+.eslintcache
