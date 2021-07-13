@@ -13,5 +13,10 @@ module.exports = {
   moduleNameMapper: {
     '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
     '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/test/__mocks__/fileMock.js',
+    '@pages/(.*)': '<rootDir>/pages/$1',
+    '@components/(.*)': '<rootDir>/components/$1',
+    '@public/(.*)': '<rootDir>/public/$1',
+    '@theme/(.*)': '<rootDir>/theme/$1',
   },
+  testEnvironment: 'jsdom',
 };
