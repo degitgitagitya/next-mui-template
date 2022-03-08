@@ -1,182 +1,25 @@
-import React from 'react';
-import { theme } from '@theme/theme';
-import { ServerStyleSheets } from '@material-ui/core';
-import Document, {
-  DocumentContext,
-  Head,
-  Html,
-  Main,
-  NextScript,
-} from 'next/document';
+import * as React from 'react';
+import Document from 'next/document';
+import createEmotionServer from '@emotion/server/create-instance';
+import createEmotionCache from '@config/emotion/createEmotionCache';
 
-class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
-    const initialProps = await Document.getInitialProps(ctx);
+import { Html, Head, Main, NextScript } from 'next/document';
+import { theme } from '@theme/global';
 
-    return initialProps;
-  }
-
+export default class MyDocument extends Document {
   render() {
     return (
-      <Html>
+      <Html lang='en'>
         <Head>
           {/* PWA primary color */}
           <meta name='theme-color' content={theme.palette.primary.main} />
-          <meta charSet='utf-8' />
-          <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
-
-          <meta property='og:title' content='Teman Koding' />
-          <meta
-            property='og:description'
-            content='Tempat anda belajar ngoding.'
-          />
-          <meta property='og:type' content='website' />
-          {/* <meta property='og:url' content='https://prosa.ai/' /> */}
-          {/* <meta
-            property='og:image'
-            content='https://prosa.ai/static/media/100.7ce28c91.png'
-          /> */}
-          <meta name='description' content='Tempat anda belajar ngoding.' />
-          <meta name='author' content='De Gitgit Agitya'></meta>
-          <meta
-            name='keywords'
-            content='ngoding, koding, pemrograman, teman koding, belajar'
-          ></meta>
-
-          <link rel='apple-touch-icon' href='icons/apple-icon-180.png' />
-
-          <meta name='apple-mobile-web-app-capable' content='yes' />
-
+          <link rel='shortcut icon' href='/static/favicon.ico' />
           <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-2048-2732.jpg'
-            media='(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)'
+            rel='stylesheet'
+            href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
           />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-2732-2048.jpg'
-            media='(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-1668-2388.jpg'
-            media='(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-2388-1668.jpg'
-            media='(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-1536-2048.jpg'
-            media='(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-2048-1536.jpg'
-            media='(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-1668-2224.jpg'
-            media='(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-2224-1668.jpg'
-            media='(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-1620-2160.jpg'
-            media='(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-2160-1620.jpg'
-            media='(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-1284-2778.jpg'
-            media='(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-2778-1284.jpg'
-            media='(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-1170-2532.jpg'
-            media='(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-2532-1170.jpg'
-            media='(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-1125-2436.jpg'
-            media='(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-2436-1125.jpg'
-            media='(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-1242-2688.jpg'
-            media='(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-2688-1242.jpg'
-            media='(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-828-1792.jpg'
-            media='(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-1792-828.jpg'
-            media='(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-1242-2208.jpg'
-            media='(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-2208-1242.jpg'
-            media='(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-750-1334.jpg'
-            media='(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-1334-750.jpg'
-            media='(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-640-1136.jpg'
-            media='(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)'
-          />
-          <link
-            rel='apple-touch-startup-image'
-            href='icons/apple-splash-1136-640.jpg'
-            media='(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)'
-          />
+          {/* Inject MUI styles first to match with the prepend: true configuration. */}
+          {(this.props as any).emotionStyleTags}
         </Head>
         <body>
           <Main />
@@ -188,7 +31,7 @@ class MyDocument extends Document {
 }
 
 // `getInitialProps` belongs to `_document` (instead of `_app`),
-// it's compatible with server-side generation (SSG).
+// it's compatible with static-site generation (SSG).
 MyDocument.getInitialProps = async (ctx) => {
   // Resolution order
   //
@@ -212,25 +55,36 @@ MyDocument.getInitialProps = async (ctx) => {
   // 3. app.render
   // 4. page.render
 
-  // Render app and page and get the context of the page with collected side effects.
-  const sheets = new ServerStyleSheets();
   const originalRenderPage = ctx.renderPage;
+
+  // You can consider sharing the same emotion cache between all the SSR requests to speed up performance.
+  // However, be aware that it can have global side effects.
+  const cache = createEmotionCache();
+  const { extractCriticalToChunks } = createEmotionServer(cache);
 
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+      enhanceApp: (App: any) =>
+        function EnhanceApp(props) {
+          return <App emotionCache={cache} {...props} />;
+        },
     });
 
   const initialProps = await Document.getInitialProps(ctx);
+  // This is important. It prevents emotion to render invalid HTML.
+  // See https://github.com/mui/material-ui/issues/26561#issuecomment-855286153
+  const emotionStyles = extractCriticalToChunks(initialProps.html);
+  const emotionStyleTags = emotionStyles.styles.map((style) => (
+    <style
+      data-emotion={`${style.key} ${style.ids.join(' ')}`}
+      key={style.key}
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{ __html: style.css }}
+    />
+  ));
 
   return {
     ...initialProps,
-    // Styles fragment is rendered after the app and page rendering finish.
-    styles: [
-      ...React.Children.toArray(initialProps.styles),
-      sheets.getStyleElement(),
-    ],
+    emotionStyleTags,
   };
 };
-
-export default MyDocument;

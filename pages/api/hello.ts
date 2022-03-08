@@ -1,5 +1,11 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import nc from 'next-connect';
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
-  res.status(200).json({ name: 'John Doe' });
-};
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+const handler = nc<NextApiRequest, NextApiResponse>().get(async (req, res) => {
+  return res.json({
+    message: 'Hello world',
+  });
+});
+
+export default handler;

@@ -16,10 +16,12 @@
     "baseUrl": "./",
     "paths": {
       "@pages/*": ["pages/*"],
-      "@components/*": ["components/*"],
       "@public/*": ["public/*"],
-      "@theme/*": ["theme/*"]
-    }
+      "@theme/*": ["theme/*"],
+      "@test/*": ["test/*"],
+      "@config/*": ["config/*"]
+    },
+    "incremental": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
