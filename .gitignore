@@ -42,3 +42,10 @@ yarn-error.log*
 
 # eslint 
 .eslintcache
+
+# typescript
+tsconfig.tsbuildinfo
+
+# service worker
+sw.js
+workbox-*.js
